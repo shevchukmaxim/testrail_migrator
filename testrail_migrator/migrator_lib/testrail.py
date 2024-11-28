@@ -186,8 +186,6 @@ class TestRailClient:
     @async_to_sync
     async def get_milestones(self, project_id: int, ignore_completed: bool, query_params=None):
         milestones = await self._process_request(f'/get_milestones/{project_id}', query_params=query_params)
-        print(f"milestones: {milestones}")
-        logging.info(f"milestones: {milestones}")
         for milestone in milestones:
             filtered_children = []
             for child_milestone in milestone['milestones']:

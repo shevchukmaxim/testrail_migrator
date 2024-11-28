@@ -290,8 +290,8 @@ def download_task(self, project_id: int, config_dict: Dict, download_attachments
     query_params = {'is_completed': 0} if ignore_completed else None
     with progress_recorder.progress_context('Getting configs'):
         resulting_data['configs'] = testrail_client.get_configs(project_id)
-    with progress_recorder.progress_context('Getting milestones'):
-        resulting_data['milestones'] = testrail_client.get_milestones(project_id, ignore_completed, query_params)
+    # with progress_recorder.progress_context('Getting milestones'):
+    #     resulting_data['milestones'] = testrail_client.get_milestones(project_id, ignore_completed, query_params)
     with progress_recorder.progress_context('Getting plans'):
         resulting_data['plans'] = testrail_client.get_plans_with_runs(project_id, query_params)
     with progress_recorder.progress_context('Getting runs for plans'):
