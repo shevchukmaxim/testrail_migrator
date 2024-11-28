@@ -32,7 +32,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='testrail-migrator',
-    version='0.3.1',
+    version='0.3.2',
     description='Plugin to migrate your data from testrail',
     install_requires=[
         'tqdm==4.64.1',

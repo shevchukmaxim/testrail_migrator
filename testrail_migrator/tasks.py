@@ -292,24 +292,24 @@ def download_task(self, project_id: int, config_dict: Dict, download_attachments
         resulting_data['configs'] = testrail_client.get_configs(project_id)
     # with progress_recorder.progress_context('Getting milestones'):
     #     resulting_data['milestones'] = testrail_client.get_milestones(project_id, ignore_completed, query_params)
-    with progress_recorder.progress_context('Getting plans'):
-        resulting_data['plans'] = testrail_client.get_plans_with_runs(project_id, query_params)
-    with progress_recorder.progress_context('Getting runs for plans'):
-        resulting_data['runs_parent_plan'] = testrail_client.get_runs_from_plans(resulting_data['plans'])
-    with progress_recorder.progress_context('Getting runs for milestones'):
-        resulting_data['runs_parent_mile'] = testrail_client.get_runs(project_id, query_params=query_params)
-    with progress_recorder.progress_context('Getting tests for runs from plans'):
-        resulting_data['tests_parent_plan'] = testrail_client.get_tests_for_runs(resulting_data['runs_parent_plan'])
-    with progress_recorder.progress_context('Getting tests for runs from miles'):
-        resulting_data['tests_parent_mile'] = testrail_client.get_tests_for_runs(resulting_data['runs_parent_mile'])
-    with progress_recorder.progress_context('Getting results for tests from plans'):
-        resulting_data['results_parent_plan'] = testrail_client.get_results_for_tests(
-            resulting_data['tests_parent_plan']
-        )
-    with progress_recorder.progress_context('Getting results for tests from milestones'):
-        resulting_data['results_parent_mile'] = testrail_client.get_results_for_tests(
-            resulting_data['tests_parent_mile']
-        )
+    # with progress_recorder.progress_context('Getting plans'):
+    #     resulting_data['plans'] = testrail_client.get_plans_with_runs(project_id, query_params)
+    # with progress_recorder.progress_context('Getting runs for plans'):
+    #     resulting_data['runs_parent_plan'] = testrail_client.get_runs_from_plans(resulting_data['plans'])
+    # with progress_recorder.progress_context('Getting runs for milestones'):
+    #     resulting_data['runs_parent_mile'] = testrail_client.get_runs(project_id, query_params=query_params)
+    # with progress_recorder.progress_context('Getting tests for runs from plans'):
+    #     resulting_data['tests_parent_plan'] = testrail_client.get_tests_for_runs(resulting_data['runs_parent_plan'])
+    # with progress_recorder.progress_context('Getting tests for runs from miles'):
+    #     resulting_data['tests_parent_mile'] = testrail_client.get_tests_for_runs(resulting_data['runs_parent_mile'])
+    # with progress_recorder.progress_context('Getting results for tests from plans'):
+    #     resulting_data['results_parent_plan'] = testrail_client.get_results_for_tests(
+    #         resulting_data['tests_parent_plan']
+    #     )
+    # with progress_recorder.progress_context('Getting results for tests from milestones'):
+    #     resulting_data['results_parent_mile'] = testrail_client.get_results_for_tests(
+    #         resulting_data['tests_parent_mile']
+    #     )
     if not download_attachments:
         save_results_to_redis(resulting_data, backup_filename)
         return
